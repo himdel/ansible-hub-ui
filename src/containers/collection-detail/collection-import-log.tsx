@@ -82,7 +82,7 @@ class CollectionImportLog extends React.Component<RouteComponentProps, IState> {
         <CollectionHeader
           collection={collection}
           params={params}
-          updateParams={params =>
+          updateParams={(params) =>
             this.updateParams(params, () => this.loadData(true))
           }
           breadcrumbs={breadcrumbs}
@@ -95,7 +95,7 @@ class CollectionImportLog extends React.Component<RouteComponentProps, IState> {
               loading={loadingImports}
               task={selectedImportDetail}
               followMessages={false}
-              setFollowMessages={_ => null}
+              setFollowMessages={(_) => null}
               selectedImport={selectedImport}
               apiError={apiError}
               hideCollectionName={true}
@@ -116,10 +116,10 @@ class CollectionImportLog extends React.Component<RouteComponentProps, IState> {
           version: this.state.collection.latest_version.version,
           sort: '-created',
         })
-          .then(importListResult => {
+          .then((importListResult) => {
             const importObj = importListResult.data.data[0];
             ImportAPI.get(importObj.id)
-              .then(importDetailResult => {
+              .then((importDetailResult) => {
                 this.setState({
                   apiError: undefined,
                   loadingImports: false,
@@ -127,14 +127,14 @@ class CollectionImportLog extends React.Component<RouteComponentProps, IState> {
                   selectedImportDetail: importDetailResult.data,
                 });
               })
-              .catch(err => {
+              .catch((err) => {
                 this.setState({
                   apiError: failMsg,
                   loadingImports: false,
                 });
               });
           })
-          .catch(err => {
+          .catch((err) => {
             this.setState({
               apiError: failMsg,
               loadingImports: false,

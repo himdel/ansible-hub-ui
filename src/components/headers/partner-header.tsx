@@ -46,7 +46,7 @@ export class PartnerHeader extends React.Component<IProps, {}> {
             <Tabs
               tabs={tabs}
               params={params}
-              updateParams={p => updateParams(p)}
+              updateParams={(p) => updateParams(p)}
             />
           </div>
           {namespace.links.length > 0 ? (

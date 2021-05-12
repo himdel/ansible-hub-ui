@@ -61,7 +61,7 @@ export class CollectionList extends React.Component<IProps, IState> {
           <div>
             <Pagination
               params={params}
-              updateParams={p => updateParams(p)}
+              updateParams={(p) => updateParams(p)}
               count={itemCount}
               isTop
             />
@@ -70,7 +70,7 @@ export class CollectionList extends React.Component<IProps, IState> {
 
         <DataList aria-label={'List of Collections'}>
           {collections.length > 0 ? (
-            collections.map(c => (
+            collections.map((c) => (
               <CollectionListItem
                 controls={
                   showControls ? this.renderCollectionControls(c) : null
@@ -90,7 +90,7 @@ export class CollectionList extends React.Component<IProps, IState> {
           <div>
             <Pagination
               params={params}
-              updateParams={p => updateParams(p)}
+              updateParams={(p) => updateParams(p)}
               count={itemCount}
             />
           </div>
@@ -119,7 +119,7 @@ export class CollectionList extends React.Component<IProps, IState> {
         <StatefulDropdown
           items={[
             <DropdownItem
-              onClick={e =>
+              onClick={(e) =>
                 this.props.handleControlClick(collection.id, 'deprecate')
               }
               key='1'

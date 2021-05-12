@@ -46,7 +46,7 @@ export class CollectionHeader extends React.Component<IProps> {
     const all_versions = [...collection.all_versions];
 
     const match = all_versions.find(
-      x => x.version === collection.latest_version.version,
+      (x) => x.version === collection.latest_version.version,
     );
 
     if (!match) {
@@ -80,13 +80,13 @@ export class CollectionHeader extends React.Component<IProps> {
         pageControls={
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <FormSelect
-              onChange={val =>
+              onChange={(val) =>
                 updateParams(ParamHelper.setParam(params, 'version', val))
               }
               value={collection.latest_version.version}
               aria-label='Select collection version'
             >
-              {all_versions.map(v => (
+              {all_versions.map((v) => (
                 <FormSelectOption
                   key={v.version}
                   value={v.version}
@@ -110,7 +110,7 @@ export class CollectionHeader extends React.Component<IProps> {
             <div>
               <ExternalLinkAltIcon />
             </div>
-            {urlKeys.map(link => {
+            {urlKeys.map((link) => {
               const l = collection.latest_version.metadata[link.key];
               if (!l) {
                 return null;

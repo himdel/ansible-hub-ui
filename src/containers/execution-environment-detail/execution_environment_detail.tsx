@@ -117,7 +117,7 @@ class ExecutionEnvironmentDetail extends React.Component<
                 text={this.state.readme}
                 placeholder={''}
                 helperText={''}
-                updateText={value =>
+                updateText={(value) =>
                   this.setState({
                     readme: value,
                   })
@@ -161,13 +161,13 @@ class ExecutionEnvironmentDetail extends React.Component<
   queryReadme(name) {
     this.setState({ loading: true }, () =>
       ExecutionEnvironmentAPI.readme(name)
-        .then(result => {
+        .then((result) => {
           this.setState({
             readme: result.data.text,
             loading: false,
           });
         })
-        .catch(error => this.setState({ redirect: 'notFound' })),
+        .catch((error) => this.setState({ redirect: 'notFound' })),
     );
   }
 

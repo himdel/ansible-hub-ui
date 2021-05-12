@@ -138,7 +138,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
       <React.Fragment>
         <ImportModal
           isOpen={showImportModal}
-          onUploadSuccess={result =>
+          onUploadSuccess={(result) =>
             this.props.history.push(
               formatPath(
                 Paths.myImports,
@@ -176,7 +176,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
           breadcrumbs={[namespaceBreadcrumb, { name: namespace.name }]}
           tabs={tabs}
           params={params}
-          updateParams={p => this.updateParams(p)}
+          updateParams={(p) => this.updateParams(p)}
           pageControls={this.renderPageControls()}
           contextSelector={
             <RepoSelector
@@ -205,7 +205,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
             ) : (
               <Section className='body'>
                 <CollectionList
-                  updateParams={params =>
+                  updateParams={(params) =>
                     this.updateParams(params, () => this.loadCollections())
                   }
                   params={params}
@@ -248,7 +248,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
   }
 
   private handleCollectionAction(id, action) {
-    const collection = this.state.collections.find(x => x.id === id);
+    const collection = this.state.collections.find((x) => x.id === id);
 
     switch (action) {
       case 'upload':
@@ -264,7 +264,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
           this.context.selectedRepo,
         )
           .then(() => this.loadCollections())
-          .catch(error => {
+          .catch((error) => {
             this.setState({
               warning: 'API Error: Failed to set deprecation.',
             });
@@ -287,7 +287,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
         ...ParamHelper.getReduced(this.state.params, this.nonAPIParams),
       },
       this.context.selectedRepo,
-    ).then(result => {
+    ).then((result) => {
       this.setState({
         collections: result.data.data,
         itemCount: result.data.meta.count,
@@ -306,11 +306,11 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
       NamespaceAPI.get(this.props.match.params['namespace']),
       MyNamespaceAPI.get(this.props.match.params['namespace']).catch(
         // expecting 404 - it just means we can not edit the namespace (unless both NamespaceAPI and MyNamespaceAPI fail)
-        e =>
+        (e) =>
           e.response && e.response.status === 404 ? null : Promise.reject(e),
       ),
     ])
-      .then(val => {
+      .then((val) => {
         this.setState({
           collections: val[0].data.data,
           itemCount: val[0].data.meta.count,
@@ -318,7 +318,7 @@ export class NamespaceDetail extends React.Component<IProps, IState> {
           showControls: !!val[2],
         });
       })
-      .catch(response => {
+      .catch((response) => {
         this.setState({ redirect: Paths.notFound });
       });
   }

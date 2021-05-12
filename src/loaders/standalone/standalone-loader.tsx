@@ -69,8 +69,8 @@ class App extends React.Component<RouteComponentProps, IState> {
     this.activateMenu(menu);
     this.setState({
       menuExpandedSections: menu
-        .filter(i => i.type === 'section' && i.active)
-        .map(i => i.name),
+        .filter((i) => i.type === 'section' && i.active)
+        .map((i) => i.name),
     });
   }
 
@@ -223,7 +223,7 @@ class App extends React.Component<RouteComponentProps, IState> {
       item.condition({ user, featureFlags }) ? (
         <NavItem
           isActive={item.active}
-          onClick={e => {
+          onClick={(e) => {
             item.onclick && item.onclick();
             e.stopPropagation();
           }}
@@ -244,7 +244,7 @@ class App extends React.Component<RouteComponentProps, IState> {
       ) : null;
     const Menu = ({ items }) => (
       <>
-        {items.map(item => (
+        {items.map((item) => (
           <ItemOrSection key={item.name} item={item} />
         ))}
       </>
@@ -265,7 +265,7 @@ class App extends React.Component<RouteComponentProps, IState> {
       this.setState({
         menuExpandedSections: isExpanded
           ? [...menuExpandedSections, groupId]
-          : reject(menuExpandedSections, name => name === groupId),
+          : reject(menuExpandedSections, (name) => name === groupId),
       });
     };
 
@@ -308,7 +308,8 @@ class App extends React.Component<RouteComponentProps, IState> {
       name,
     });
     const menuSection = (name, options = {}, items = []) => ({
-      condition: (...params) => some(items, item => item.condition(...params)), // any visible items inside
+      condition: (...params) =>
+        some(items, (item) => item.condition(...params)), // any visible items inside
       ...options,
       type: 'section',
       name,
@@ -360,7 +361,7 @@ class App extends React.Component<RouteComponentProps, IState> {
 
   private activateMenu(items) {
     items.forEach(
-      item =>
+      (item) =>
         (item.active =
           item.type === 'section'
             ? this.activateMenu(item.items)

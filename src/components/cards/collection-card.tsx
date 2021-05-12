@@ -77,7 +77,7 @@ export class CollectionCard extends React.Component<IProps> {
           </div>
         </CardBody>
         <CardBody className='type-container'>
-          {Object.keys(contentSummary.contents).map(k =>
+          {Object.keys(contentSummary.contents).map((k) =>
             this.renderTypeCount(k, contentSummary.contents[k]),
           )}
         </CardBody>

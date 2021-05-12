@@ -69,7 +69,7 @@ export class Pagination extends React.Component<IProps> {
   }
 
   private mapPerPageOptions(options) {
-    return options.map(option => ({
+    return options.map((option) => ({
       title: String(option),
       value: option,
     }));

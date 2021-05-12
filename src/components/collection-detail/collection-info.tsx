@@ -107,7 +107,7 @@ export class CollectionInfo extends React.Component<IProps> {
               <SplitItem className='install-tile'>Install Version</SplitItem>
               <SplitItem isFilled>
                 <FormSelect
-                  onChange={val =>
+                  onChange={(val) =>
                     updateParams(ParamHelper.setParam(params, 'version', val))
                   }
                   value={
@@ -115,7 +115,7 @@ export class CollectionInfo extends React.Component<IProps> {
                   }
                   aria-label='Select collection version'
                 >
-                  {all_versions.map(v => (
+                  {all_versions.map((v) => (
                     <FormSelectOption
                       key={v.version}
                       value={v.version}

@@ -116,7 +116,7 @@ class CertificationDashboard extends React.Component<
         <BaseHeader title='Approval dashboard'></BaseHeader>
         <AlertList
           alerts={this.state.alerts}
-          closeAlert={i => this.closeAlert(i)}
+          closeAlert={(i) => this.closeAlert(i)}
         />
         {unauthorized ? (
           <EmptyStateUnauthorized />
@@ -128,7 +128,7 @@ class CertificationDashboard extends React.Component<
                   <ToolbarGroup>
                     <ToolbarItem>
                       <CompoundFilter
-                        updateParams={p =>
+                        updateParams={(p) =>
                           this.updateParams(p, () => this.queryCollections())
                         }
                         params={params}
@@ -168,7 +168,7 @@ class CertificationDashboard extends React.Component<
 
                 <Pagination
                   params={params}
-                  updateParams={p =>
+                  updateParams={(p) =>
                     this.updateParams(p, () => this.queryCollections())
                   }
                   count={itemCount}
@@ -177,7 +177,7 @@ class CertificationDashboard extends React.Component<
               </div>
               <div>
                 <AppliedFilters
-                  updateParams={p =>
+                  updateParams={(p) =>
                     this.updateParams(p, () => this.queryCollections())
                   }
                   params={params}
@@ -193,7 +193,7 @@ class CertificationDashboard extends React.Component<
               <div className='footer'>
                 <Pagination
                   params={params}
-                  updateParams={p =>
+                  updateParams={(p) =>
                     this.updateParams(p, () => this.queryCollections())
                   }
                   count={itemCount}
@@ -260,7 +260,7 @@ class CertificationDashboard extends React.Component<
         <SortTable
           options={sortTableOptions}
           params={params}
-          updateParams={p =>
+          updateParams={(p) =>
             this.updateParams(p, () => this.queryCollections())
           }
         />
@@ -461,7 +461,7 @@ class CertificationDashboard extends React.Component<
           originalRepo,
           destinationRepo,
         )
-          .then(result =>
+          .then((result) =>
             // Since pulp doesn't reply with the new object, perform a
             // second query to get the updated data
             {
@@ -471,7 +471,7 @@ class CertificationDashboard extends React.Component<
               this.waitForUpdate(result.data.remove_task_id, version);
             },
           )
-          .catch(error => {
+          .catch((error) => {
             this.setState({
               updatingVersions: [],
               alerts: this.state.alerts.concat({
@@ -489,13 +489,13 @@ class CertificationDashboard extends React.Component<
 
   private waitForUpdate(result, version) {
     const taskId = result;
-    return TaskAPI.get(taskId).then(async result => {
+    return TaskAPI.get(taskId).then(async (result) => {
       if (result.data.state === 'waiting' || result.data.state === 'running') {
-        await new Promise(r => setTimeout(r, 500));
+        await new Promise((r) => setTimeout(r, 500));
         this.waitForUpdate(taskId, version);
       } else if (result.data.state === 'completed') {
         return CollectionVersionAPI.list(this.state.params).then(
-          async result => {
+          async (result) => {
             this.setState({
               versions: result.data.data,
               updatingVersions: [],
@@ -520,7 +520,7 @@ class CertificationDashboard extends React.Component<
 
   private queryCollections() {
     this.setState({ loading: true }, () =>
-      CollectionVersionAPI.list(this.state.params).then(result => {
+      CollectionVersionAPI.list(this.state.params).then((result) => {
         this.setState({
           versions: result.data.data,
           itemCount: result.data.meta.count,

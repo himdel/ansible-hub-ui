@@ -124,8 +124,8 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
                   numberOfResults={resultsCount}
                   params={params}
                   namespaces={namespaces}
-                  selectImport={sImport => this.selectImport(sImport)}
-                  updateParams={params => {
+                  selectImport={(sImport) => this.selectImport(sImport)}
+                  updateParams={(params) => {
                     this.updateParams(params, () =>
                       this.setState(
                         {
@@ -144,7 +144,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
                   loading={loadingImportDetails}
                   task={selectedImportDetails}
                   followMessages={followLogs}
-                  setFollowMessages={isFollowing => {
+                  setFollowMessages={(isFollowing) => {
                     this.setState({
                       followLogs: isFollowing,
                     });
@@ -189,7 +189,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
 
       if (selectedImport.state !== selectedImportDetails.state) {
         const importIndex = importList.findIndex(
-          x => x.id === selectedImport.id,
+          (x) => x.id === selectedImport.id,
         );
 
         const imports = cloneDeep(importList);
@@ -210,13 +210,13 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
 
   private loadNamespaces(callback?: () => void) {
     MyNamespaceAPI.list({ page_size: 1000 })
-      .then(result => {
+      .then((result) => {
         const namespaces = result.data.data;
         let selectedNS;
 
         if (this.state.params.namespace) {
           selectedNS = namespaces.find(
-            x => x.name === this.state.params.namespace,
+            (x) => x.name === this.state.params.namespace,
           );
         }
 
@@ -235,12 +235,12 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
           callback,
         );
       })
-      .catch(result => console.log(result));
+      .catch((result) => console.log(result));
   }
 
   private loadImportList(callback?: () => void) {
     ImportAPI.list({ ...this.state.params, sort: '-created' })
-      .then(importList => {
+      .then((importList) => {
         this.setState(
           {
             importList: importList.data.data,
@@ -251,7 +251,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
           callback,
         );
       })
-      .catch(result => console.log(result));
+      .catch((result) => console.log(result));
   }
 
   private loadTaskDetails(callback?: () => void) {
@@ -262,7 +262,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
       });
     } else {
       ImportAPI.get(this.state.selectedImport.id)
-        .then(result => {
+        .then((result) => {
           this.setState(
             {
               importDetailError: '',
@@ -280,7 +280,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
                 name: importDeets.name,
                 version: importDeets.version,
               })
-                .then(result => {
+                .then((result) => {
                   if (result.data.meta.count === 1) {
                     this.setState({
                       selectedCollectionVersion: result.data.data[0],
@@ -295,7 +295,7 @@ class MyImports extends React.Component<RouteComponentProps, IState> {
             },
           );
         })
-        .catch(result => {
+        .catch((result) => {
           this.setState({
             selectedImportDetails: undefined,
             importDetailError: 'Error fetching import from API',

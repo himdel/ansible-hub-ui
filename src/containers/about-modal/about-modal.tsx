@@ -35,7 +35,7 @@ export class AboutModalWindow extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    ApplicationInfoAPI.get('').then(result => {
+    ApplicationInfoAPI.get('').then((result) => {
       this.setState({
         applicationInfo: {
           server_version: result.data.server_version,
@@ -88,7 +88,7 @@ export class AboutModalWindow extends React.Component<IProps, IState> {
               User Groups
             </TextListItem>
             <TextListItem component={TextListItemVariants.dd}>
-              {user.groups.map(group => group.name).join()}
+              {user.groups.map((group) => group.name).join()}
             </TextListItem>
             <TextListItem component={TextListItemVariants.dt}>
               Browser Version

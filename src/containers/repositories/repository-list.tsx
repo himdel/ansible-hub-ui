@@ -121,7 +121,7 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
                   remoteToEdit,
                   this.unModifiedRemote,
                 )
-                  .then(r => {
+                  .then((r) => {
                     this.setState(
                       {
                         errorMessages: {},
@@ -131,7 +131,7 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
                       () => this.loadContent(),
                     );
                   })
-                  .catch(err =>
+                  .catch((err) =>
                     this.setState({ errorMessages: mapErrorMessages(err) }),
                   );
               } catch {
@@ -159,7 +159,7 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
                   <Tabs
                     tabs={tabs}
                     params={params}
-                    updateParams={p => {
+                    updateParams={(p) => {
                       // empty the content before updating the params to prevent
                       // rendering from breaking when the wrong content is loaded
                       this.setState({ content: [] }, () =>
@@ -210,8 +210,8 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
               editRemote={(remote: RemoteType) =>
                 this.selectRemoteToEdit(remote)
               }
-              syncRemote={distro =>
-                RemoteAPI.sync(distro).then(result => this.loadContent())
+              syncRemote={(distro) =>
+                RemoteAPI.sync(distro).then((result) => this.loadContent())
               }
               user={user}
               refreshRemotes={this.refreshContent}
@@ -244,7 +244,7 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
       if (params['tab'] == 'remote') {
         RemoteAPI.list(
           ParamHelper.getReduced(params, this.nonQueryStringParams),
-        ).then(result => {
+        ).then((result) => {
           this.setState({
             loading: false,
             content: result.data.data,
@@ -258,7 +258,7 @@ class RepositoryList extends React.Component<RouteComponentProps, IState> {
           APIClass = MyDistributionAPI;
         }
 
-        APIClass.list().then(result => {
+        APIClass.list().then((result) => {
           this.setState({
             loading: false,
             content: result.data.data,
