@@ -3,6 +3,9 @@ import { TaskAPI } from 'src/api';
 
 export function waitForTask(task, bailAfter = 10) {
   return TaskAPI.get(task).then((result) => {
+    if (result.data.state !== 'completed' && result.data.state !== 'running') {
+      return Promise.reject(result.data.error.description);
+    }
     if (result.data.state !== 'completed') {
       if (!bailAfter) {
         return Promise.reject(
