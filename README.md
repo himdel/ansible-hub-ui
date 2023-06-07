@@ -16,3 +16,10 @@ forked from [ansible/ansible-hub-ui](https://github.com/ansible/ansible-hub-ui),
 
 * [life cycle](https://access.redhat.com/support/policy/updates/ansible-automation-platform)
 * [version matrix](https://github.com/ansible/galaxy_ng/wiki/Galaxy-NG-Version-Matrix)
+
+---
+
+New UI:
+
+* [HUB PRs](https://github.com/ansible/ansible-ui/pulls?q=is%3Apr+is%3Aopen+label%3AHUB)
+* [my open PRs](https://github.com/ansible/ansible-ui/pulls/himdel)
