@@ -11,7 +11,7 @@ forked from [ansible/ansible-hub-ui](https://github.com/ansible/ansible-hub-ui),
   * [4.5](https://github.com/ansible/ansible-hub-ui/pulls?q=is%3Apr+label%3Abackport-4.5+-label%3Abackported-4.5), [api](https://github.com/ansible/galaxy_ng/pulls?q=is%3Apr+label%3Abackport-4.5+-label%3Abackported-4.5)
   * [4.6](https://github.com/ansible/ansible-hub-ui/pulls?q=is%3Apr+label%3Abackport-4.6+-label%3Abackported-4.6), [api](https://github.com/ansible/galaxy_ng/pulls?q=is%3Apr+label%3Abackport-4.6+-label%3Abackported-4.6)
   * [4.7](https://github.com/ansible/ansible-hub-ui/pulls?q=is%3Apr+label%3Abackport-4.7+-label%3Abackported-4.7), [api](https://github.com/ansible/galaxy_ng/pulls?q=is%3Apr+label%3Abackport-4.7+-label%3Abackported-4.7)
-  * [4.7](https://github.com/ansible/ansible-hub-ui/pulls?q=is%3Apr+label%3Abackport-4.8+-label%3Abackported-4.8), [api](https://github.com/ansible/galaxy_ng/pulls?q=is%3Apr+label%3Abackport-4.8+-label%3Abackported-4.8)
+  * [4.8](https://github.com/ansible/ansible-hub-ui/pulls?q=is%3Apr+label%3Abackport-4.8+-label%3Abackported-4.8), [api](https://github.com/ansible/galaxy_ng/pulls?q=is%3Apr+label%3Abackport-4.8+-label%3Abackported-4.8)
 
 * [life cycle](https://access.redhat.com/support/policy/updates/ansible-automation-platform)
 * [version matrix](https://github.com/ansible/galaxy_ng/wiki/Galaxy-NG-Version-Matrix)
